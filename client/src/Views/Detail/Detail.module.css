@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 94.5vh;
+  background-image: url("../../Images/MM05.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.divflagAndInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 900px;
+  height: 500px;
+}
+
+.divFlagImage {
+  width: 470px;
+  height: 350px;
+}
+
+.flag {
+  width: 100%;
+  height: 100%;
+}
+
+.divInfoCountry,
+.divInfoActivities {
+  text-align: left;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(172, 203, 232);
+}
+
+.tit1 {
+  font-family: Tahoma;
+  font-size: 30px;
+  color: rgb(230, 236, 241);
+}
+
+/* .divInfoActivities {
+  background-color: darkorange;
+} */

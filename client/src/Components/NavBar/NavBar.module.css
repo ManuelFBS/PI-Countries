@@ -1,0 +1,57 @@
+.navB {
+  background-color: rgba(10, 30, 120, 100);
+  margin-top: 0px;
+  height: 30px;
+  width: 100vw;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
+.searchInput {
+  width: 210px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(214, 239, 239);
+  color: rgb(3, 3, 96);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.allButtons {
+  width: 80px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+}
+
+.allButtons:hover {
+  border: 1px solid rgb(94, 91, 91);
+}
+
+.linkBut {
+  text-decoration: none;
+}
+
+.divForm,
+.divSelect {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.divSelect {
+  width: 50vw;
+}
+
+.sel {
+  width: 180px;
+  height: 25px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+}

@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("../../Images/MM07.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bigTitle1,
+.bigTitle2 {
+  margin-top: 100px;
+  margin-left: -1000px;
+  text-align: left;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-style: italic;
+  font-size: 70px;
+  color: rgb(183, 189, 232);
+}
+
+.bigTitle2 {
+  margin-top: 280px;
+  margin-left: -500px;
+}
+
+.divButton {
+  display: flex;
+  justify-content: left;
+  margin-top: 500px;
+  margin-left: -330px;
+}
+
+.inButton {
+  width: 220px;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 15px;
+  background-color: rgb(191, 194, 216);
+}
+
+.linkBut {
+  text-decoration: none;
+}
