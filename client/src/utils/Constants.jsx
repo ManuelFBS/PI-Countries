@@ -41,6 +41,7 @@ const BY_CONTINENTS = [
   "South America",
   "Oceania",
 ];
+
 const BY_ACTIVITY = [
   "Boat Racing",
   "Car Racing",

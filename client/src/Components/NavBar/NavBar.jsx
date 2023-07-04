@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { BY_CONTINENTS, BY_ACTIVITY } from "../../utils/Constants";
@@ -9,27 +9,16 @@ const NavBar = ({ currentView, onViewChange }) => {
       <form>
         <div className={styled.divForm}>
           <div>
-            <button
-              type="submit"
-              className={styled.allButtons}
-              onClick={() => onViewChange("Home")}
-              hidden={currentView === "Home"}
-            >
-              <Link to="/home" className={styled.linkBut}>
+            <Link to="/home" className={styled.linkBut}>
+              <button type="submit" className={styled.allButtons}>
                 Home
-              </Link>
-            </button>
-
-            <button
-              type="submit"
-              className={styled.allButtons}
-              onClick={() => onViewChange("Create")}
-              hidden={currentView === "Create"}
-            >
-              <Link to="/form" className={styled.linkBut}>
+              </button>
+            </Link>
+            <Link to="/form" className={styled.linkBut}>
+              <button type="submit" className={styled.allButtons}>
                 Create
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
 
           <div className={styled.divSelect}>

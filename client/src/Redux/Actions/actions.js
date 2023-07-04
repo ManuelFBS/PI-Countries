@@ -1,9 +1,10 @@
 import {
   GET_COUNTRIES,
   GET_COUNTRY_BY_ID,
+  FILTER_BY_NAME,
   POST_ACTIVITY,
   GET_ALL_ACTIVITIES,
-  FILTER_NAME,
+  FAILURE,
 } from "./actions-types";
 import axios from "axios";
 import { connect } from "../../Connections/urlConn";
@@ -17,7 +18,7 @@ export function getAllCountries() {
         payload: response.data,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      alert(error.message);
     }
   };
 }
@@ -31,7 +32,24 @@ export function getCountryById(id) {
         payload: response.data,
       });
     } catch (error) {
-      alert(error);
+      alert(error.message);
+    }
+  };
+}
+
+export function getCountryByName(name) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`${connect.urlIdOrName}?name=${name}`);
+      return dispatch({
+        type: FILTER_BY_NAME,
+        payload: response.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: FAILURE,
+        payload: error.response.data.msg,
+      });
     }
   };
 }
@@ -49,27 +67,12 @@ export function getAllActivities() {
     }
   };
 }
-/*
-
-  export function getCountryByName(name) {
-    return async function (dispatch) {
-        try {
-            var response = await axios.get(`/countries?name=${name}`)
-            return dispatch({
-                type: GET_CONTRY_BY_NAME,
-                payload: response.data
-            });
-        } catch (error) {
-            console.log(error)
-        }
-    }
-  }
-*/
 
 export function postActivity(info) {
   return async function (dispatch) {
     try {
       const response = await axios.post(`${connect.urlActivities}/`, info);
+      alert("The activity has been created successfully...!");
       dispatch({ type: POST_ACTIVITY, payload: "" });
     } catch (error) {
       alert(error.message);

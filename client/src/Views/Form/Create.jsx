@@ -88,7 +88,6 @@ const Create = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(postActivity(state));
-    // postActivity(state);
   };
 
   return (
