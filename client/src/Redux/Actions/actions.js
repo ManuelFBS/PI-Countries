@@ -4,7 +4,10 @@ import {
   GET_BY_NAME,
   POST_ACTIVITY,
   GET_ALL_ACTIVITIES,
-  FAILURE,
+  FILTER_BY_CONTINENTS,
+  FILTER_BY_ACTIVITIES,
+  ORDER_ASC_DSC,
+  ORDER_BY_POP,
 } from "./actions-types";
 import axios from "axios";
 import { connect } from "../../Connections/urlConn";
@@ -70,21 +73,37 @@ export function postActivity(info) {
     try {
       const response = await axios.post(`${connect.urlActivities}/`, info);
       alert("The activity has been created successfully...!");
-      dispatch({ type: POST_ACTIVITY, payload: "" });
+      return dispatch({ type: POST_ACTIVITY, payload: "" });
     } catch (error) {
       alert(error.message);
     }
   };
 }
 
-// export function filters(name) {
-//   return async function (dispatch) {
-//     const response = await axios.get(`${connect.urlBack}/countries/`, name);
-//     dispatch({
-//       // type: FILTER_BY_NAME,
-//       // payload: name,
-//     });
-//   };
-// }
+export const filterByContinents = (continent) => {
+  return {
+    type: FILTER_BY_CONTINENTS,
+    payload: continent,
+  };
+};
 
-export function ordering(order) {}
+export const orderAscDsc = (orderBy) => {
+  return {
+    type: ORDER_ASC_DSC,
+    payload: orderBy,
+  };
+};
+
+export const orderByPop = (orderBy) => {
+  return {
+    type: ORDER_BY_POP,
+    payload: orderBy,
+  };
+};
+
+export const filterByActivities = () => {
+  return {
+    type: FILTER_BY_ACTIVITIES,
+    payload: selectedActivity,
+  };
+};

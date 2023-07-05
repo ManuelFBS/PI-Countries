@@ -33,10 +33,9 @@ const SEASON = ["No season", "Spring", "Summer", "Autumn", "Winter"];
 const BY_CONTINENTS = [
   "All Continents",
   "Africa",
-  "Antartica",
+  "Antarctica",
   "Asia",
   "Europe",
-  "Central America",
   "North America",
   "South America",
   "Oceania",

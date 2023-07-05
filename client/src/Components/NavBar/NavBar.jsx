@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import styled from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { BY_CONTINENTS, BY_ACTIVITY } from "../../utils/Constants";
-
-//
 import { useDispatch } from "react-redux";
-import { getCountryByName } from "../../Redux/Actions/actions";
-//
+import {
+  getCountryByName,
+  filterByContinents,
+  orderAscDsc,
+  orderByPop,
+  filterByActivities,
+} from "../../Redux/Actions/actions";
 
 const NavBar = () => {
-  //
   const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
+
+  const handleFilter = (event) => {
+    const continent = event.target.value;
+    dispatch(filterByContinents(continent));
+  };
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -22,8 +29,22 @@ const NavBar = () => {
   const handleInputChange = (event) => {
     setSearchValue(event.target.value);
   };
-  //
-  //
+
+  const handleOrderAscDsc = (event) => {
+    const order = event.target.value;
+    dispatch(orderAscDsc(order));
+  };
+
+  const handleOrderByPopulation = (event) => {
+    const orderByP = event.target.value;
+    dispatch(orderByPop(orderByP));
+  };
+
+  const handleSelectChange = (event) => {
+    const selectedActivity = event.target.value;
+    dispatch(filterByActivities(selectedActivity));
+  };
+
   return (
     <div className={styled.navB}>
       <form onSubmit={handleSearch}>
@@ -43,7 +64,7 @@ const NavBar = () => {
 
           <div className={styled.divSelect}>
             {/* FILTRO POR CONTINENTES... */}
-            <select className={styled.sel}>
+            <select className={styled.sel} onChange={handleFilter}>
               <option disabled selected>
                 Find by Continent...
               </option>
@@ -55,7 +76,7 @@ const NavBar = () => {
             </select>
 
             {/* ORDENAMIENTO POR... */}
-            <select className={styled.sel}>
+            <select className={styled.sel} onChange={handleOrderAscDsc}>
               <option disabled selected>
                 Order by...
               </option>
@@ -64,12 +85,12 @@ const NavBar = () => {
             </select>
 
             {/* FILTRO POR POBLACION... */}
-            <select className={styled.sel}>
+            <select className={styled.sel} onChange={handleOrderByPopulation}>
               <option disabled selected>
                 Select by population...
               </option>
-              <option>Higher population</option>
-              <option>Lower population</option>
+              <option value={"lowerToHigher"}>Lower to higher</option>
+              <option value={"higherToLower"}>Higher to lower</option>
             </select>
 
             {/* FILTRO POR ACTIVIDAD... */}

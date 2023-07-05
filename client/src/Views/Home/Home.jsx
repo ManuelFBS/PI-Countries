@@ -6,12 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const countries = useSelector((state) => state.countries);
-  //
+
+  // const countries = useSelector((state) => state.countries);
+  const countries = useSelector(
+    (state) => state.filteredCountries || state.countries
+  );
   const countryFilteredByName = useSelector(
     (state) => state.countryFilteredByName
   );
-  //
+
   const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 10;
 
@@ -19,11 +22,9 @@ const Home = () => {
     dispatch(getAllCountries());
   }, [dispatch]);
 
-  //
   useEffect(() => {
     setCurrentPage(1);
   }, [countryFilteredByName]);
-  //
 
   // CALCULA EL INDICE DEL ULTIMO PAIS A MOSTRAR Y DEL PRIMER PAIS EN CADA PAGINA...
   const indexOfLastCountry = currentPage * countriesPerPage;
@@ -32,14 +33,11 @@ const Home = () => {
   const countriesToShow = countryFilteredByName.length
     ? countryFilteredByName.slice(indexOfFirstCountry, indexOfLastCountry)
     : countries.slice(indexOfFirstCountry, indexOfLastCountry);
-  //
 
   const handleGoToPage = (currentP) => {
     setCurrentPage(currentP);
   };
 
-  // const totalPages = Math.ceil(countries.length / countriesPerPage);
-  //
   const totalPages = Math.ceil(
     countryFilteredByName.length
       ? countryFilteredByName.length / countriesPerPage
