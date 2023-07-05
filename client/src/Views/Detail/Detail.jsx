@@ -41,7 +41,7 @@ const Detail = (country) => {
       </div>
 
       <div className={styled.divInfoActivities}>
-        <h2>Ativities:</h2>
+        <h2>Activities:</h2>
         {countryFilteredById.Activities &&
           countryFilteredById.Activities.map((activity) => (
             <div>

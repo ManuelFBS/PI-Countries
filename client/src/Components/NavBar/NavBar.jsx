@@ -3,10 +3,30 @@ import styled from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { BY_CONTINENTS, BY_ACTIVITY } from "../../utils/Constants";
 
-const NavBar = ({ currentView, onViewChange }) => {
+//
+import { useDispatch } from "react-redux";
+import { getCountryByName } from "../../Redux/Actions/actions";
+//
+
+const NavBar = () => {
+  //
+  const [searchValue, setSearchValue] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    dispatch(getCountryByName(searchValue));
+    setSearchValue("");
+  };
+
+  const handleInputChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+  //
+  //
   return (
     <div className={styled.navB}>
-      <form>
+      <form onSubmit={handleSearch}>
         <div className={styled.divForm}>
           <div>
             <Link to="/home" className={styled.linkBut}>
@@ -69,6 +89,8 @@ const NavBar = ({ currentView, onViewChange }) => {
               type="search"
               placeholder="Search Country..."
               className={styled.searchInput}
+              value={searchValue}
+              onChange={handleInputChange}
             />
             <button type="submit" className={styled.allButtons}>
               Search

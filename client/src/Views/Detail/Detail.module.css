@@ -35,15 +35,13 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: rgb(172, 203, 232);
+  /* color: rgb(172, 203, 232); */
+  color: gold;
 }
 
 .tit1 {
   font-family: Tahoma;
   font-size: 30px;
-  color: rgb(230, 236, 241);
+  /* color: rgb(230, 236, 241); */
+  color: rgb(241, 182, 5);
 }
-
-/* .divInfoActivities {
-  background-color: darkorange;
-} */

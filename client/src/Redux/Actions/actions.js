@@ -1,7 +1,7 @@
 import {
   GET_COUNTRIES,
   GET_COUNTRY_BY_ID,
-  FILTER_BY_NAME,
+  GET_BY_NAME,
   POST_ACTIVITY,
   GET_ALL_ACTIVITIES,
   FAILURE,
@@ -40,16 +40,13 @@ export function getCountryById(id) {
 export function getCountryByName(name) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`${connect.urlIdOrName}?name=${name}`);
+      const response = await axios.get(`${connect.urlIdOrName}/?name=${name}`);
       return dispatch({
-        type: FILTER_BY_NAME,
+        type: GET_BY_NAME,
         payload: response.data,
       });
     } catch (error) {
-      return dispatch({
-        type: FAILURE,
-        payload: error.response.data.msg,
-      });
+      alert("Country not found...");
     }
   };
 }

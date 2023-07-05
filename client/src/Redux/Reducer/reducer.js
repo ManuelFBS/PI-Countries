@@ -1,10 +1,9 @@
 import {
   GET_COUNTRIES,
   GET_COUNTRY_BY_ID,
-  FILTER_BY_NAME,
+  GET_BY_NAME,
   POST_ACTIVITY,
   GET_ALL_ACTIVITIES,
-  FAILURE,
 } from "../Actions/actions-types";
 
 let initialState = {
@@ -34,18 +33,13 @@ function rootReducer(state = initialState, action) {
         activities: action.payload,
       };
       break;
-    case FILTER_BY_NAME:
+    case GET_BY_NAME:
       return {
         ...state,
         countryFilteredByName: action.payload,
         error: "",
       };
       break;
-    case FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-      };
     default:
       return state;
       break;
