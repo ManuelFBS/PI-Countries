@@ -35,10 +35,33 @@
 
 .inButton {
   width: 220px;
-  height: 40px;
-  font-size: 18px;
-  border-radius: 15px;
+  height: 45px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 5px;
   background-color: rgb(191, 194, 216);
+  /*  */
+  color: #fff !important;
+  padding: 0.5em 1.2em;
+  background: #318aac;
+  border: 2px solid;
+  border-color: #318aac;
+  position: relative;
+}
+
+.inButton::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 0px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 1s ease;
+}
+
+.inButton:hover::before {
+  width: 100%;
 }
 
 .linkBut {

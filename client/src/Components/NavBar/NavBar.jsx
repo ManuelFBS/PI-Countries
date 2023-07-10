@@ -2,18 +2,26 @@ import React, { useEffect, useState } from "react";
 import styled from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { BY_CONTINENTS, BY_ACTIVITY } from "../../utils/Constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getCountryByName,
   filterByContinents,
   orderAscDsc,
   orderByPop,
+  getAllActivities,
   filterByActivities,
 } from "../../Redux/Actions/actions";
 
 const NavBar = () => {
+  const activities = useSelector((state) => state.activities);
+  const filteredCountries = useSelector((state) => state.filteredCountries);
   const [searchValue, setSearchValue] = useState("");
+  const [countries, setCountries] = useState([]);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllActivities());
+  }, [dispatch]);
 
   const handleFilter = (event) => {
     const continent = event.target.value;
@@ -43,6 +51,13 @@ const NavBar = () => {
   const handleSelectChange = (event) => {
     const selectedActivity = event.target.value;
     dispatch(filterByActivities(selectedActivity));
+
+    if (selectedActivity === "All") {
+      setCountries([...countries]);
+    } else {
+      setCountries([...filteredCountries]);
+    }
+    event.target.value = "";
   };
 
   return (
@@ -94,15 +109,17 @@ const NavBar = () => {
             </select>
 
             {/* FILTRO POR ACTIVIDAD... */}
-            <select className={styled.sel}>
-              <option disabled selected>
-                Find by activity...
+            <select className={styled.sel} onChange={handleSelectChange}>
+              <option value="" hidden>
+                Show by Activity
               </option>
-              {BY_ACTIVITY.map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
+              <option value="All">All...</option>
+              {Array.isArray(activities) &&
+                activities.map((activity) => (
+                  <option key={activity.id} value={activity.name}>
+                    {activity.name}
+                  </option>
+                ))}
             </select>
           </div>
           <div>

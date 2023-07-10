@@ -187,22 +187,24 @@ function rootReducer(state = initialState, action) {
       if (selectedActivity === "All") {
         return {
           ...state,
-          filteredCountries: null,
+          countries: [...state.countries],
+          filteredCountries: [...state.countries],
         };
       } else {
         const allCountriesFilteredByActivity = state.countries.filter(
           (country) => {
-            return country.activities.some(
-              (activity) => activity.name === selectedActivity
-            );
+            for (let i = 0; i < country.activities.length; i++) {
+              if (country.activities[i].name === payload) return true;
+            }
+            return false;
           }
         );
-
         return {
           ...state,
           filteredCountries: allCountriesFilteredByActivity,
         };
       }
+
     default:
       return state;
   }

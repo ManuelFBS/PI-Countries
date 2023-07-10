@@ -11,6 +11,7 @@ const Home = () => {
   const countries = useSelector(
     (state) => state.filteredCountries || state.countries
   );
+
   const countryFilteredByName = useSelector(
     (state) => state.countryFilteredByName
   );

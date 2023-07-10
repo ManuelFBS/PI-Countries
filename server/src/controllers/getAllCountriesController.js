@@ -19,6 +19,7 @@ const getAllCountries = async (name) => {
       country.name.toLowerCase().includes(name.toLowerCase())
     );
     if (!filterCountryName.length) {
+      console.log(filterCountryName);
       throw Error(`No country with the '${name}' found`);
     } else {
       return filterCountryName;

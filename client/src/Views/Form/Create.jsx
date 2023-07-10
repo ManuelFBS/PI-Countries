@@ -88,6 +88,13 @@ const Create = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(postActivity(state));
+    setState({
+      name: "",
+      difficulty: "No difficulty",
+      duration: "No fixed duration",
+      season: "No season",
+      country: "Select a Country...",
+    });
   };
 
   return (

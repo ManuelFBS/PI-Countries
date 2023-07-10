@@ -101,7 +101,7 @@ export const orderByPop = (orderBy) => {
   };
 };
 
-export const filterByActivities = () => {
+export const filterByActivities = (selectedActivity) => {
   return {
     type: FILTER_BY_ACTIVITIES,
     payload: selectedActivity,
